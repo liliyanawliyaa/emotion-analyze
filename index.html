@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Analyzer</title>
+    <br>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f8;
+            color: #2b2429;
+        }
+        header {
+            background-color: #d8a9e66b;
+            color: rgb(86, 35, 105);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header img {
+            height: 95px;
+
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .intro {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .intro h2 {
+            margin-top: 0;
+        }
+        .section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .section h3 {
+            margin-top: 0;
+        }
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ffe8fd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        input[type="file"] {
+            margin-top: 10px;
+        }
+        button {
+            background-color: #9c6a91;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #d1addb;
+        }
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #d8a9e66b;
+            color: rgb(86, 35, 105);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <img src="Colorful Brain Human Technology Logo (3).png" alt="Logo">
+        </div>
+        <h1>Emotion Analyzer</h1>
+    </header>
+    <main>
+        <section class="intro">
+            <h2>Welcome to Emotion Analyzer</h2>
+            <p>Analyze the emotional tone of your text inputs using our advanced AI-powered emotion detection tool. Upload datasets or enter text to get started.</p>
+        </section>
+
+        <section class="section">
+            <h3>Analyze Text Emotion</h3>
+            <form id="text-form">
+                <label for="text-input">Enter your text below:</label><br><br>
+                <textarea id="text-input" name="text-input" placeholder="Type your text here..."></textarea><br>
+                <button type="submit">Analyze Emotion</button>
+            </form>
+            <div id="result"></div>
+        </section>
+
+      
+    </main>
+    <footer>
+        &copy; 2025 Emotion Analyzer. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById('text-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const textInput = document.getElementById('text-input').value;
+            document.getElementById('result').textContent = 'Detected Emotion: [Placeholder]';
+        });
+
+        document.getElementById('dataset-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fileInput = document.getElementById('dataset-upload');
+            const file = fileInput.files[0];
+            if (!file) {
+                document.getElementById('upload-status').textContent = 'Please select a file to upload.';
+                return;
+            }
+            const formData = new FormData();
+            formData.append('dataset', file);
+            document.getElementById('upload-status').textContent = 'Dataset uploaded successfully. [Placeholder]';
+        });
+    </script>
+</body>
+</html>
