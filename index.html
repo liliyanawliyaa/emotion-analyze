@@ -120,27 +120,26 @@
 
    <script>
 document.getElementById('text-form').addEventListener('submit', function(e) {
-    e.preventDefault();  // Prevent page reload on form submit
-    const textInput = document.getElementById('text-input').value;
-
-    fetch('http://127.0.0.1:5000/predict', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: textInput }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById('result').textContent = `Detected Emotion: ${data.emotion}`;
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('result').textContent = 'Error analyzing emotion.';
-    });
+  e.preventDefault();
+  const text = document.getElementById('text-input').value;
+  fetch('http://127.0.0.1:5000/predict', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({text})
+  })
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('result').textContent = 'Detected Emotion: ' + data.emotion;
+  })
+  .catch(() => {
+    document.getElementById('result').textContent = 'Error analyzing emotion.';
+  });
 });
 </script>
 
 </body>
 </html>
+
 
 
 
